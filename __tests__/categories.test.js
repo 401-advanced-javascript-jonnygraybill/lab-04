@@ -9,7 +9,7 @@ describe('Categories Model', () => {
   })
 
   // How might we repeat this to check on types?
-  it('sanitize() returns undefined with missing requirements', () => {
+  it('Sanitize() returns undefined with missing requirements', () => {
     const schema = categories.schema;
     var testRecord = {};
     for (var field in schema) {
@@ -20,7 +20,7 @@ describe('Categories Model', () => {
     expect(categories.sanitize(testRecord)).toBeUndefined();
   });
 
-  it('can post() a new category', () => {
+  it('Can post() a new category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
       .then(record => {
@@ -31,7 +31,7 @@ describe('Categories Model', () => {
       .catch(e => console.error('ERR', e));
   });
 
-  it('can get() a category', () => {
+  it('Can get() a category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
       .then(record => {
@@ -45,7 +45,7 @@ describe('Categories Model', () => {
       .catch(err => console.log(error));
   });
 
-  it('can update() a category', () => {
+  it('Can update() a category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
     .then(record => {
@@ -61,7 +61,7 @@ describe('Categories Model', () => {
     .catch(err => console.error);
   })
 
-  it('can delete() a category', () => {
+  it('Can delete() a category', () => {
     let obj = { name: 'Test Category' };
     categories.create(obj)
     .then(record => {

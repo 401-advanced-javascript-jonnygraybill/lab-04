@@ -20,7 +20,7 @@ describe('Products Model', () => {
     expect(products.sanitize(testRecord)).toBeUndefined();
   });
 
-  it('can post() a new category', () => {
+  it('Can post() a new category', () => {
     let obj = { name: 'Test Category' };
     return products.create(obj)
       .then(record => {
@@ -31,7 +31,7 @@ describe('Products Model', () => {
       .catch(e => console.error);
   });
 
-  it('can get() a product', () => {
+  it('Can get() a product', () => {
     let obj = { name: 'Test Product' };
     products.create(obj)
       .then(record => {
@@ -45,7 +45,7 @@ describe('Products Model', () => {
       .catch(err => console.log(error));
   });
 
-  it('can update() a product', () => {
+  it('Can update() a product', () => {
     let obj = { name: 'Test Product' };
     return products.create(obj)
     .then(record => {
@@ -61,7 +61,7 @@ describe('Products Model', () => {
     .catch(err => console.error);
   })
 
-  it('can delete() a Product', () => {
+  it('Can delete() a Product', () => {
     let obj = { name: 'Test Product' };
     products.create(obj)
     .then(record => {

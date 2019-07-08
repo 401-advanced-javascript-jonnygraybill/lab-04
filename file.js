@@ -1,11 +1,22 @@
 'use strict';
 
 const uuid = require('uuid/v4');
+const fs = require('fs');
 
 class Model {
 
   constructor() {
     this.database = [];
+    fs.readFile('data/person.db', (err,data) => {
+      let buffer = data.toString();
+      if (err) {console.error}
+    })
+  }
+
+  writeToFile() {
+    fs.writeFile('data/persons.db', this.database, function (err) {
+      if (err) { throw err; }
+    });
   }
 
   get(id) {
