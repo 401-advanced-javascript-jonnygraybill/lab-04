@@ -9,7 +9,7 @@ describe('Categories Model', () => {
   })
 
   // How might we repeat this to check on types?
-  it('sanitize() returns undefined with missing requirements', () => {
+  it('Sanitize() returns undefined with missing requirements', () => {
     const schema = categories.schema;
     var testRecord = {};
     for (var field in schema) {
@@ -20,7 +20,7 @@ describe('Categories Model', () => {
     expect(categories.sanitize(testRecord)).toBeUndefined();
   });
 
-  it('can post() a new category', () => {
+  it('Can post() a new category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
       .then(record => {
@@ -31,7 +31,7 @@ describe('Categories Model', () => {
       .catch(e => console.error('ERR', e));
   });
 
-  it('can get() a category', () => {
+  it('Can get() a category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
       .then(record => {
@@ -41,7 +41,35 @@ describe('Categories Model', () => {
               expect(category[0][key]).toEqual(obj[key]);
             });
           });
-      });
+      })
+      .catch(err => console.log(error));
   });
 
+  it('Can update() a category', () => {
+    let obj = { name: 'Test Category' };
+    return categories.create(obj)
+    .then(record => {
+      categories.update(record.id, { name: 'Test Category'})
+      .then(category => {
+        categories.get(record.id)
+        .then(banana => {
+          expect(banana.name).toEqual('Test Category');
+        })
+        .catch(err => console.error);
+      });
+    })
+    .catch(err => console.error);
+  })
+
+  it('Can delete() a category', () => {
+    let obj = { name: 'Test Category' };
+    categories.create(obj)
+    .then(record => {
+      return categories.delete(record.id)
+      .then(categories => {
+        expect(categores.get(record.id).name).toBeFalsy();
+      });
+    })
+    .catch(err => console.error);
+  })
 });
